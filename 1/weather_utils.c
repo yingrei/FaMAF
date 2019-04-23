@@ -30,16 +30,11 @@ for (k_year=0u,k_year<YEARS , k_year++){
 //Ayuda: El procedimiento debe tomar como parámetro un arreglo que almacenará los resultados obtenidos.
 
 
-void procedimiento(tclimate(a), int output[YEARS]) {
-...
-for (unsigned int year = 0; year < YEARS; year++) {
-
-
-void max_temp_of_year(WeatherTable array, int output[]){
+void max_temp_of_year(WeatherTable array, int output[YEARS]){
 	
-   	for (int year = 0; year < YEARS; year++){
+int max_temp = -9999999;
 
-		int max_temp = -9999999;
+   	for (int year = 0; year < YEARS; year++){
 
 		for (int month = 0; month < MONTHS; month++){
 
@@ -52,11 +47,28 @@ void max_temp_of_year(WeatherTable array, int output[]){
 			}
 		} 
 	}
-}
-...
-output[year] = ... // la mayor temperatura máxima del año 'year' + 1980
-}
+} // la mayor temperatura máxima del año 'year' + 1980
+
 
 
 //3. Implementar un procedimiento que registre para cada año entre 1980 y 2016 el mes de ese año en que se registró la mayor cantidad mensual de precipitaciones.
 
+void month_year_max_rain(WeatherTable array, int output[YEARS]){
+	
+int max_rainfall = -9999999;
+
+   	for (int year = 0; year < YEARS; year++){
+
+		for (int month = 0; month < MONTHS; month++){
+
+			for (int day = 0; day < DAYS; day++){
+
+				if (max_rainfall < array[year][month][day]._max_rainfall){ //yo quiero la parte de max_temp de ese día de ese mes de ese año
+                max_rainfall= array[year][month][day]._max_rainfall;
+				
+				}
+			}
+				output[month] = array[month]._rainfall; //falta completar que te devuelva el mes, el arreglo tiene la forma de [mayo, mayo, septiembre, agosto], donde mayo --> 1980, mayo --> 1981, septiembre --> 1982, agosto --> 1983
+		} 
+	}
+}
