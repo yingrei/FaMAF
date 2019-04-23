@@ -1,0 +1,49 @@
+
+//weather_utils.c
+
+#include "weather_utils.h"
+
+#include <stdlib.h>
+
+int minimum_temperature(WeatherTable array){
+	
+	int min_temp = 99999999;
+
+	for (int i = 0; i < YEARS; i++){
+	
+		for (int j = 0; j < MONTHS; j++){
+
+			for (int k = 0; k < DAYS; k++){
+
+				if (min_temp > array[i][j][k]._min_temp){
+
+					min_temp = array[i][j][k]._min_temp;
+				}
+			}
+		} 
+	}
+	return min_temp;
+}
+
+void max_temp_by_year(WeatherTable array, int output[]){
+	
+   	for (int i = 0; i < YEARS; i++){
+
+		int max_temp = -9999999;
+
+		for (int j = 0; j < MONTHS; j++){
+
+			for (int k = 0; k < DAYS; k++){
+
+				if (max_temp < array[i][j][k]._max_temp){
+
+					output[i] = array[i][j][k]._max_temp;
+				}
+			}
+		} 
+	}
+}
+
+
+2
+
